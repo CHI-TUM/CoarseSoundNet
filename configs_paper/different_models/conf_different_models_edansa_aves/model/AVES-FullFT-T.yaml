@@ -1,0 +1,9 @@
+id: AVES-FullFT-T
+_target_: aves.AvesClassifier
+transfer: https://storage.googleapis.com/esp-public-files/ported_aves/aves-base-all.torchaudio.pt
+config_path: /path/to/downloaded_weights/aves-base-all.torchaudio.model_config.json
+model_path: /path/to/downloaded_weights/aves-base-all.torchaudio.pt
+trainable: True
+
+transform:
+  type: raw

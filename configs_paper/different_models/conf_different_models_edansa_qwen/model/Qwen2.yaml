@@ -1,0 +1,14 @@
+id: Qwen2
+_target_: qwen_model.Qwen2FNNN
+transfer: /path/to/audio_qwen/aqwen_encoder_base.pt
+
+hidden_size: 512
+num_layers: 2
+dropout: 0.5
+
+transform:
+  type: raw
+  base:
+    - autrainer.transforms.FeatureExtractor:
+        fe_type: Whisper
+        fe_transfer: Qwen/Qwen2-Audio-7B

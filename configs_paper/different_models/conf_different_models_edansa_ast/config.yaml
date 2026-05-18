@@ -1,0 +1,22 @@
+defaults:
+  - _autrainer_
+  - _self_
+
+
+results_dir: /path/to/results
+experiment_id: ast
+iterations: 30
+inference_batch_size: 1
+progress_bar: false
+
+hydra:
+  sweeper:
+    params:
+      +seed: 1 #, 2 #, 3, 4, 5
+      +batch_size: 16 #, 32 
+      +learning_rate: 0.001, 0.0001, 0.00001
+      dataset: CoarseNet-32k-ML-Edansa-ast
+      model: ASTModel-T
+      optimizer: Adam, AdamW #, SGD
+      augmentation: None
+          

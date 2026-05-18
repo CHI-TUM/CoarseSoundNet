@@ -1,0 +1,26 @@
+id: CoarseNet-32k-ML-Edansa
+_target_: autrainer.datasets.EDANSA2019
+
+threshold: 0.5
+path: /path/to/EDANSA-2019 
+features_subdir: log_mel_32k
+index_column: Clip Path
+
+target_column: 
+  - Anth
+  - Bio
+  - Geo
+  # - Sil
+file_type: npy
+file_handler: autrainer.datasets.utils.NumpyFileHandler
+
+criterion: torch.nn.BCEWithLogitsLoss
+metrics:
+  - autrainer.metrics.MLAccuracy
+  - autrainer.metrics.MLF1Micro
+  - autrainer.metrics.MLF1Macro
+  - autrainer.metrics.MLF1Weighted
+tracking_metric: autrainer.metrics.MLF1Macro
+
+transform:
+  type: grayscale

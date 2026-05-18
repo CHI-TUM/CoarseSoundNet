@@ -1,0 +1,15 @@
+id: CustomAugPipeline_woAddSpec
+_target_: autrainer.augmentations.AugmentationPipeline
+
+generator_seed: 0
+
+pipeline:
+  - autrainer.augmentations.Sequential:
+      sequence:
+        - autrainer.augmentations.Choice:
+            weights: [0.3, 0.7]
+            choices:
+              - autrainer.augmentations.GaussianNoise:
+                  p: 0.8
+              - autrainer.augmentations.SpecAugment:
+                  p: 0.8

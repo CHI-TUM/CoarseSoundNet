@@ -1,0 +1,21 @@
+defaults:
+  - _autrainer_
+  - _self_
+
+results_dir: /path/to/results
+experiment_id: aves
+iterations: 50 #30
+inference_batch_size: 1
+progress_bar: false
+
+hydra:
+  sweeper:
+    params:
+      +seed: 1 #, 2 #, 3, 4, 5
+      +batch_size: 16 #, 32 
+      +learning_rate: 0.001, 0.0001, 0.00001
+      dataset: CoarseNet-32k-ML-Edansa-aves
+      model: AVES-T, AVES-FullFT-T
+      optimizer: Adam, AdamW #, SGD
+      augmentation: None 
+          

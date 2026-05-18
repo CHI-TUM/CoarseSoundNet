@@ -1,0 +1,20 @@
+defaults:
+  - _autrainer_
+  - _self_
+
+results_dir: /path/to/results
+experiment_id: cnns
+iterations: 30
+inference_batch_size: 16
+progress_bar: false
+
+hydra:
+  sweeper:
+    params:
+      +seed: 1
+      +batch_size: 32, 64
+      +learning_rate: 0.001, 0.0001
+      dataset: CoarseNet-32k-ML-Edansa
+      model: Cnn10-32k-T, Cnn14-32k-T, ResNet-50-T, EfficientNet-B7-T
+      optimizer: Adam, AdamW
+      augmentation: None

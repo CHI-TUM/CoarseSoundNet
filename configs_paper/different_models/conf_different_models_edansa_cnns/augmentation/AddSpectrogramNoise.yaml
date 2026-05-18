@@ -1,0 +1,10 @@
+id: AddSpectrogramNoise
+_target_: autrainer.augmentations.AugmentationPipeline
+
+generator_seed: 0
+
+pipeline:
+  - AddSpectrogramNoise.AddSpectrogramNoise:
+      noise_path: "/path/to/insects/noise"
+      spectrogram_type: 32k
+      p: 1.0
