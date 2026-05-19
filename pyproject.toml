@@ -7,7 +7,6 @@ requires-python = ">=3.11"
 dependencies = [
     "auglib>=1.0.4",
     "autrainer==0.6.0",
-    "birdnetlib>=0.18.0",
     "cowsay>=6.1",
     "hear21passt>=0.0.26",
     "pydub>=0.25.1",
