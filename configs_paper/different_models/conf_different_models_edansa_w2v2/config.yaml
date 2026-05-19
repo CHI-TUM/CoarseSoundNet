@@ -17,7 +17,6 @@ hydra:
       +learning_rate: 0.001, 0.0001, 0.00001
       dataset: CoarseNet-32k-ML-Edansa-w2v2
       model: w2v2-b, w2v2-l
-      # model: ASTModel-T
       optimizer: Adam, AdamW #, SGD
       augmentation: None
           
