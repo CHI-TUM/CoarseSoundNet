@@ -1,0 +1,16 @@
+id: CLAP
+_target_: clap.CLAPFFNN
+model_name: laion/clap-htsat-unfused
+freeze_extractor: true
+
+hidden_size: 512
+num_layers: 2
+dropout: 0.5
+
+transform:
+  type: raw
+  base:
+    - clap_feature_extractor.FeatureExtractor:
+        fe_type: CLAP
+        fe_transfer: laion/clap-htsat-unfused
+        sampling_rate: 48000

@@ -1,0 +1,22 @@
+defaults:
+  - _autrainer_
+  - _self_
+
+
+results_dir: /path/to/results/withSilence/clap_all_sets
+experiment_id: grid_search
+iterations: 30
+inference_batch_size: 1
+progress_bar: false
+
+hydra:
+  sweeper:
+    params:
+      +seed: 1 
+      +batch_size: 16 
+      +learning_rate: 0.0001, 0.00001 
+      dataset: EdansaActuallyBalanced-clap-all
+      model: CLAP-FullFT
+      optimizer: Adam
+      augmentation: SpecAugment
+          

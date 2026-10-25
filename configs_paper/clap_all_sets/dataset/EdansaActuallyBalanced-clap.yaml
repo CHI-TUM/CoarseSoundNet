@@ -1,0 +1,37 @@
+id: EdansaActuallyBalanced-clap
+_target_: Edansa.Edansav2Balanced
+
+threshold: 0.5
+path: /path/to/EDANSA-2019 
+features_subdir: default
+index_column: filename
+
+additional_train_domains:
+  beambient: /path/to/data/segments_5s # BE-Ambient
+test_paths: null
+
+target_column: 
+  - Anth
+  - Bio
+  - Geo
+  - Sil
+file_type: wav
+file_handler: 
+  autrainer.datasets.utils.AudioFileHandler:
+    target_sample_rate: 48000
+
+criterion: torch.nn.BCEWithLogitsLoss
+metrics:
+  - autrainer.metrics.MLAccuracy
+  - autrainer.metrics.MLF1Micro
+  - autrainer.metrics.MLF1Macro
+  - autrainer.metrics.MLF1Weighted
+tracking_metric: autrainer.metrics.MLF1Macro
+
+transform:
+  type: raw
+  train:
+    - autrainer.transforms.RandomCrop:
+        size: 1001
+        axis: -2
+        order: -5
