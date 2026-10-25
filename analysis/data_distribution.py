@@ -16,6 +16,13 @@ def get_counts(csv_path) -> dict:
         return None 
 
     df = pd.read_csv(csv_path)
+    label_cols = ["Anth", "Bio", "Geo", "Sil"]
+
+    print("All actually occurring label combinations:")
+    print(df[label_cols].value_counts(dropna=False))
+
+    invalid = ~df[label_cols].isin([0, 1]).all(axis=1)
+    print("Rows with missing or nonbinary labels:", invalid.sum())
     counts = {
         "A": ((df["Anth"] == 1) & (df["Bio"] == 0) & (df["Geo"] == 0) & (df["Sil"] == 0)).sum(),
         "B": ((df["Anth"] == 0) & (df["Bio"] == 1) & (df["Geo"] == 0) & (df["Sil"] == 0)).sum(),
@@ -71,6 +78,11 @@ if __name__ == "__main__":
     df = pd.DataFrame([counts])
     print(df)
 
+    print("\nBest thresholds - paper version:")
+    besound_path = "/path/to/folder/best_threshold.csv"
+    counts = get_counts(csv_path=besound_path)
+    df = pd.DataFrame([counts])
+    print(df)
 
         
         
